@@ -1,0 +1,8 @@
+pyrogram
+TgCrypto
+Pyromod
+pymongo
+dnspython
+pytz
+tzdata
+backports-zoneinfo
