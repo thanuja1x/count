@@ -4,7 +4,9 @@ from pyrogram import Client , filters
 import asyncio
 import time
 import pytz
-from backports.zoneinfo import ZoneInfo
+
+
+
 
 bot = Client(
     'MY first project',
@@ -18,69 +20,90 @@ START_MESSAGE='EXAM COUNT DOWN'
 START_BUTTONS=[
     [InlineKeyboardButton('📛COUNT📛',callback_data='COUNT')],
 ]
-
+@bot.on_message(filters.photo & filters.private)
+def photo(bot , message):
+     message.reply(message.photo.file_id)
 @bot.on_message(filters.regex('menu')) #start
 def start(bot, message):
     text = START_MESSAGE
     reply_markup = InlineKeyboardMarkup(START_BUTTONS)
-    message.reply(
-        text=text,
+    bot.send_photo(
+        chat_id='-1001764080153',
+        photo = 'AgACAgUAAxkBAANXZMasRjBiLFcVXVsUlKGviBozmbAAAly8MRsGYTBWAXE2nryHgxIACAEAAwIAA3gABx4E',
+        caption =text,
         reply_markup=reply_markup,
-        disable_web_page_preview=True
     )
 
-@bot.on_callback_query()
+@bot.on_callback_query(group=5)
+
 async def cb_handler(client: bot, query: CallbackQuery):
+        user_input_time = 10
         if query.data=="COUNT":
-            dt1 = datetime(2023,11,27,00,00,00,000000,tzinfo=ZoneInfo('Asia/Kolkata'))
-            dt2 = datetime.now(pytz.timezone('Asia/Kolkata'))
-            dt3 = int((dt1 - dt2).total_seconds())
-            user_input_time = dt3
             while user_input_time>0 and user_input_time!=0:
+                dt11 = datetime(2023,11,27,00,00,00,000000,tzinfo=ZoneInfo('Asia/Kolkata'))
+                dt22 = datetime.now(pytz.timezone('Asia/Kolkata'))
+                dt3 = int((dt11 - dt22).total_seconds())
+                user_input_time = dt3
                 da=user_input_time//(3600*24)
                 h=user_input_time%(3600*24)//3600
                 m=user_input_time%3600//60
                 s=user_input_time%60
                 Countdown_TeLe_TiPs='දින {:02d} | පැය {:02d} | මිනිත්තු {:02d} | තත්පර {:02d} යි'.format(da,h,m,s)
                 update_text=str(Countdown_TeLe_TiPs)
-                   
-                t=int(s/2)
-                e1='□'*t
-                e2=(30-t)*'■'
+                td=datetime.now().date() 
+                td2=td
+                todaydate = f'📅 අද : {td2}'
+                tt=datetime.now().strftime("%I:%M %p")
+                tt2=tt
+                todaytime= f'⏰ වෙලාව : {tt2}'
+                t=int(s/6)
+                e1='ㅤ▱ㅤ'*t
+                e2=(10-t)*'ㅤ▰ㅤ'
                 effect=e2+e1
-                if s < 10:
+                if s < 7:
                      effect_01='🔴'
-                     effect_02='⚪️'
-                elif s < 20:
-                     effect_01='♻️'
-                     effect_02='💠'
-                elif s < 30:
-                     effect_01='⏰'
-                     effect_02='⏱'
-                elif s < 40:
-                     effect_01='🔵'
-                     effect_02='🟢'
-                elif s < 50:
-                     effect_01='🕒'
-                     effect_02='🕘'
+                     effect_02='✥'
+                elif s < 14:
+                     effect_01='◇'
+                     effect_02='◆'
+                elif s < 21:
+                     effect_01='⏱'
+                     effect_02='✥'
+                elif s < 28:
+                     effect_01='🔘'
+                     effect_02='❖'
+                elif s < 35:
+                     effect_01='🥇'
+                     effect_02='❖'
+                elif s < 42:
+                     effect_01='💠'
+                     effect_02='✥'
+                elif s < 49:
+                     effect_01='🇱🇰'
+                     effect_02='❆'
+                elif s < 54:
+                     effect_01='🏆'
+                     effect_02='◆'
                 elif s <= 60:
-                     effect_01='🟡'
-                     effect_02='🔶'
+                     effect_01='☘️'
+                     effect_02='◆'
 
                 reply_markup = InlineKeyboardMarkup([
-                     [InlineKeyboardButton('2023 උසස්පෙළ විභහගයට තව',callback_data='s')],
-                     [InlineKeyboardButton(update_text,callback_data="COUNT")],
-                     [InlineKeyboardButton(effect,'effect')],
-                     [InlineKeyboardButton(effect_01,'effect'),InlineKeyboardButton(effect_02,'effect'),InlineKeyboardButton(effect_01,'effect'),InlineKeyboardButton(effect_02,'effect'),InlineKeyboardButton(effect_01,'effect'),InlineKeyboardButton(effect_02,'effect')],
-                     [InlineKeyboardButton(effect_02,'effect'),InlineKeyboardButton(effect_01,'effect'),InlineKeyboardButton(effect_02,'effect'),InlineKeyboardButton(effect_01,'effect'),InlineKeyboardButton(effect_02,'effect'),InlineKeyboardButton(effect_01,'effect')],
-                     [InlineKeyboardButton(effect_01,'effect'),InlineKeyboardButton(effect_02,'effect'),InlineKeyboardButton(effect_01,'effect'),InlineKeyboardButton(effect_02,'effect'),InlineKeyboardButton(effect_01,'effect'),InlineKeyboardButton(effect_02,'effect')],
-                     [InlineKeyboardButton(effect_02,'effect'),InlineKeyboardButton(effect_01,'effect'),InlineKeyboardButton(effect_02,'effect'),InlineKeyboardButton(effect_01,'effect'),InlineKeyboardButton(effect_02,'effect'),InlineKeyboardButton(effect_01,'effect')],
-                     [InlineKeyboardButton(effect_01,'effect'),InlineKeyboardButton(effect_02,'effect'),InlineKeyboardButton(effect_01,'effect'),InlineKeyboardButton(effect_02,'effect'),InlineKeyboardButton(effect_01,'effect'),InlineKeyboardButton(effect_02,'effect')],
-                     [InlineKeyboardButton(effect_02,'effect'),InlineKeyboardButton(effect_01,'effect'),InlineKeyboardButton(effect_02,'effect'),InlineKeyboardButton(effect_01,'effect'),InlineKeyboardButton(effect_02,'effect'),InlineKeyboardButton(effect_01,'effect')],
-                     
+                     [InlineKeyboardButton('2023 උසස්පෙළ විභහගයට තව',callback_data='effect')],
+                     [InlineKeyboardButton(update_text,callback_data="effect")],
+                     [InlineKeyboardButton(effect,callback_data='effect')],
+                     [InlineKeyboardButton(effect_01,callback_data='effect'),InlineKeyboardButton(effect_02,callback_data='effect'),InlineKeyboardButton(effect_01,callback_data='effect'),InlineKeyboardButton(effect_02,callback_data='effect'),InlineKeyboardButton(effect_01,callback_data='effect'),InlineKeyboardButton(effect_02,callback_data='effect'),InlineKeyboardButton(effect_01,callback_data='effect'),InlineKeyboardButton(effect_02,callback_data='effect')],
+                     [InlineKeyboardButton(effect_02,callback_data='effect'),InlineKeyboardButton(effect_01,callback_data='effect'),InlineKeyboardButton(effect_02,callback_data='effect'),InlineKeyboardButton(effect_01,callback_data='effect'),InlineKeyboardButton(effect_02,callback_data='effect'),InlineKeyboardButton(effect_01,callback_data='effect'),InlineKeyboardButton(effect_02,callback_data='effect'),InlineKeyboardButton(effect_01,callback_data='effect')],
+                     [InlineKeyboardButton(effect_01,callback_data='effect'),InlineKeyboardButton(effect_02,callback_data='effect'),InlineKeyboardButton(effect_01,callback_data='effect'),InlineKeyboardButton(effect_02,callback_data='effect'),InlineKeyboardButton(effect_01,callback_data='effect'),InlineKeyboardButton(effect_02,callback_data='effect'),InlineKeyboardButton(effect_01,callback_data='effect'),InlineKeyboardButton(effect_02,callback_data='effect')],
+                     [InlineKeyboardButton(effect_02,callback_data='effect'),InlineKeyboardButton(effect_01,callback_data='effect'),InlineKeyboardButton(effect_02,callback_data='effect'),InlineKeyboardButton(effect_01,callback_data='effect'),InlineKeyboardButton(effect_02,callback_data='effect'),InlineKeyboardButton(effect_01,callback_data='effect'),InlineKeyboardButton(effect_02,callback_data='effect'),InlineKeyboardButton(effect_01,callback_data='effect')],
+                     [InlineKeyboardButton(effect_01,callback_data='effect'),InlineKeyboardButton(effect_02,callback_data='effect'),InlineKeyboardButton(effect_01,callback_data='effect'),InlineKeyboardButton(effect_02,callback_data='effect'),InlineKeyboardButton(effect_01,callback_data='effect'),InlineKeyboardButton(effect_02,callback_data='effect'),InlineKeyboardButton(effect_01,callback_data='effect'),InlineKeyboardButton(effect_02,callback_data='effect')],
+                     [InlineKeyboardButton(effect_02,callback_data='effect'),InlineKeyboardButton(effect_01,callback_data='effect'),InlineKeyboardButton(effect_02,callback_data='effect'),InlineKeyboardButton(effect_01,callback_data='effect'),InlineKeyboardButton(effect_02,callback_data='effect'),InlineKeyboardButton(effect_01,callback_data='effect'),InlineKeyboardButton(effect_02,callback_data='effect'),InlineKeyboardButton(effect_01,callback_data='effect')],
+                     [InlineKeyboardButton(effect_01,callback_data='effect'),InlineKeyboardButton(effect_02,callback_data='effect'),InlineKeyboardButton(effect_01,callback_data='effect'),InlineKeyboardButton(effect_02,callback_data='effect'),InlineKeyboardButton(effect_01,callback_data='effect'),InlineKeyboardButton(effect_02,callback_data='effect'),InlineKeyboardButton(effect_01,callback_data='effect'),InlineKeyboardButton(effect_02,callback_data='effect')],
+                     [InlineKeyboardButton(todaydate,callback_data='effect'),InlineKeyboardButton(todaytime,callback_data='effect')],
                      [InlineKeyboardButton('Powered By Science Edu Team ⚡️',url='https://t.me/BioVideoFullSyllubus/9337')],
              
                      ] )
+                
                 await query.edit_message_reply_markup(
                         reply_markup=reply_markup
                     )
