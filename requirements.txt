@@ -5,4 +5,4 @@ pymongo
 dnspython
 pytz
 tzdata
-backports-zoneinfo
+backports.zoneinfo;python_version<"3.9"
