@@ -27,7 +27,7 @@ def start(bot, message):
     text = START_MESSAGE
     reply_markup = InlineKeyboardMarkup(START_BUTTONS)
     bot.send_photo(
-        chat_id='-1001874943245',
+        chat_id='-1001790892638',
         photo = 'AgACAgUAAxkBAANXZMasRjBiLFcVXVsUlKGviBozmbAAAly8MRsGYTBWAXE2nryHgxIACAEAAwIAA3gABx4E',
         caption =text,
         reply_markup=reply_markup,
@@ -95,7 +95,7 @@ async def cb_handler(Client: bot, query: CallbackQuery):
                      [InlineKeyboardButton(effect_02,callback_data='effect'),InlineKeyboardButton(effect_01,callback_data='effect'),InlineKeyboardButton(effect_02,callback_data='effect'),InlineKeyboardButton(effect_01,callback_data='effect'),InlineKeyboardButton(effect_02,callback_data='effect'),InlineKeyboardButton(effect_01,callback_data='effect'),InlineKeyboardButton(effect_02,callback_data='effect'),InlineKeyboardButton(effect_01,callback_data='effect')],
                      [InlineKeyboardButton(effect_01,callback_data='effect'),InlineKeyboardButton(effect_02,callback_data='effect'),InlineKeyboardButton(effect_01,callback_data='effect'),InlineKeyboardButton(effect_02,callback_data='effect'),InlineKeyboardButton(effect_01,callback_data='effect'),InlineKeyboardButton(effect_02,callback_data='effect'),InlineKeyboardButton(effect_01,callback_data='effect'),InlineKeyboardButton(effect_02,callback_data='effect')],
                      [InlineKeyboardButton(todaydate,callback_data='effect'),InlineKeyboardButton(todaytime,callback_data='effect')],
-                     [InlineKeyboardButton('Powered By Science Edu Team ⚡️',url='https://t.me/BioVideoFullSyllubus/9337')],
+                     [InlineKeyboardButton('Powered By Science Edu Team ⚡️',url='https://t.me/BioVideoFullSyllubus')],
              
                      ] )
                 
